@@ -1,0 +1,76 @@
+CREATE DATABASE slaughterhouse_db;
+
+CREATE TABLE slaughterhouse.animal (
+    id SERIAL PRIMARY KEY,
+    registration_number VARCHAR(255) NOT NULL,
+    type VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE slaughterhouse.product (
+    id SERIAL PRIMARY KEY,
+    animal_reference VARCHAR(255) NOT NULL,
+    parts TEXT[] NOT NULL
+);
+
+INSERT INTO slaughterhouse.animal (registration_number, type) VALUES
+('A12345', 'Cow'),
+('A12346', 'Sheep'),
+('A12347', 'Pig'),
+('A12348', 'Chicken'),
+('A12349', 'Goat'),
+('A12350', 'Horse'),
+('A12351', 'Cow'),
+('A12352', 'Sheep'),
+('A12353', 'Pig'),
+('A12354', 'Chicken'),
+('A12355', 'Goat'),
+('A12356', 'Horse'),
+('A12357', 'Cow'),
+('A12358', 'Sheep'),
+('A12359', 'Pig'),
+('A12360', 'Chicken'),
+('A12361', 'Goat'),
+('A12362', 'Horse'),
+('A12363', 'Cow'),
+('A12364', 'Sheep'),
+('A12365', 'Pig'),
+('A12366', 'Chicken'),
+('A12367', 'Goat'),
+('A12368', 'Horse'),
+('A12369', 'Cow');
+
+INSERT INTO slaughterhouse.product (animal_reference, parts) VALUES
+('A12345', ARRAY['Rib', 'Steak']),
+('A12346', ARRAY['Leg', 'Chop']),
+('A12347', ARRAY['Bacon', 'Ham']),
+('A12348', ARRAY['Breast', 'Wing']),
+('A12349', ARRAY['Leg', 'Chop']),
+('A12350', ARRAY['Steak', 'Rib']),
+('A12351', ARRAY['Rib', 'Steak']),
+('A12352', ARRAY['Leg', 'Chop']),
+('A12353', ARRAY['Bacon', 'Ham']),
+('A12354', ARRAY['Breast', 'Wing']),
+('A12355', ARRAY['Leg', 'Chop']),
+('A12356', ARRAY['Steak', 'Rib']),
+('A12357', ARRAY['Rib', 'Steak']),
+('A12358', ARRAY['Leg', 'Chop']),
+('A12359', ARRAY['Bacon', 'Ham']),
+('A12360', ARRAY['Breast', 'Wing']),
+('A12361', ARRAY['Leg', 'Chop']),
+('A12362', ARRAY['Steak', 'Rib']),
+('A12363', ARRAY['Rib', 'Steak']),
+('A12364', ARRAY['Leg', 'Chop']),
+('A12365', ARRAY['Bacon', 'Ham']),
+('A12366', ARRAY['Breast', 'Wing']),
+('A12367', ARRAY['Leg', 'Chop']),
+('A12368', ARRAY['Steak', 'Rib']),
+('A12369', ARRAY['Rib','Steak']);
+
+
+
+GRANT USAGE ON SCHEMA slaughterhouse TO postgres;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA slaughterhouse TO postgres;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA slaughterhouse TO postgres;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA slaughterhouse GRANT ALL ON TABLES TO postgres;
+ALTER DEFAULT PRIVILEGES IN SCHEMA slaughterhouse GRANT ALL ON SEQUENCES TO postgres;

@@ -1,0 +1,36 @@
+Slaughterhouse Project Overview
+1. Introduction
+This project involves building a gRPC-based slaughterhouse management system that interfaces with a PostgreSQL database. The system allows users to retrieve information about animals and products related to the slaughterhouse.
+
+2. gRPC and Protobuf
+gRPC (Google Remote Procedure Call) is a high-performance RPC (Remote Procedure Call) framework that allows different systems to communicate efficiently. In this project, gRPC is used to enable communication between clients and the slaughterhouse backend system.
+
+Protobuf (Protocol Buffers) is used for serializing structured data. It is a language-neutral, platform-neutral, and extensible way of serializing data. Protobuf files (.proto) are used to define the service and message types for communication in gRPC.
+
+3. System Components
+The project is divided into several components:
+
+SlaughterhouseServiceImpl: The main service implementation where the business logic resides. This includes methods to retrieve information about animals and products.
+DatabaseUtil: A utility class that manages connections to the PostgreSQL database.
+PostgreSQL Database: The backend data store where all information about animals and products is stored.
+BloomRPC: A client application used to test the gRPC services.
+4. PostgreSQL Database
+The PostgreSQL database is used to store the data for the slaughterhouse system. The database consists of two main tables:
+
+animal: This table stores information about animals, including their registration number and type.
+product: This table stores information about products, including the parts of the animal.
+The database is organized under a schema called slaughterhouse, and proper permissions are granted to ensure that the application user can interact with the database.
+
+5. Schema and Permissions Setup
+The following SQL commands are used to set up the schema and grant necessary permissions:
+
+Create the schema: CREATE SCHEMA slaughterhouse;
+Create the tables for storing animal and product data: CREATE TABLE slaughterhouse.animal (...); CREATE TABLE slaughterhouse.product (...);
+Grant the necessary permissions to the application user: GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA slaughterhouse TO your_username;
+6. Troubleshooting Common Errors
+Common errors encountered during the development process include:
+
+Relation does not exist: This occurs when PostgreSQL cannot find the specified table. It is often caused by case-sensitivity or incorrect schema references.
+Permission denied: This occurs when the application user lacks the necessary privileges to access certain tables or schemas. The solution is to grant the appropriate permissions.
+7. Conclusion
+This project demonstrates how to use gRPC with PostgreSQL to create a scalable and efficient backend service. By following proper setup procedures, including schema creation and permission management, the system can handle requests for animal and product data effectively.
