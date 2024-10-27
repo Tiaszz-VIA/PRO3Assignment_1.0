@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package via.pro3;
+
+message Animal {
+  int32 id = 1;
+  string registration_number = 2;
+  string type = 3;
+}
+
+message Product {
+  int32 id = 1;
+  repeated string parts = 2;
+  string animal_reference = 3;
+}
+
+message AnimalResponse {
+  repeated Animal animals = 1;
+}
+
+message ProductResponse {
+  repeated Product products = 1;
+}
+
+service SlaughterhouseService {
+  rpc GetAnimalInfo (ProductRequest) returns (AnimalResponse);
+  rpc GetProductInfo (AnimalRequest) returns (ProductResponse);
+}
+
+message ProductRequest {
+  int32 product_id = 1;
+}
+
+message AnimalRequest {
+  int32 animal_id = 1;
+}
